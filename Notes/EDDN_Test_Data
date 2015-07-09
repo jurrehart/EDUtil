@@ -1,0 +1,21 @@
+POST http://eddn-gateway.elite-markets.net:8080/upload/ 
+
+
+{
+        "$schemaRef": "http://schemas.elite-markets.net/eddn/commodity/1/test",
+        "header": {
+            "uploaderID": "abcdef0123456789",
+            "softwareName": "EDUtil",
+            "softwareVersion": V0.001"
+        },
+        "message": {
+            "systemName": "Eranin",
+            "stationName": "Azeban Orbital",
+            "itemName": "Gold",
+            "buyPrice": 1024,
+            "stationStock": 7,
+            "sellPrice": 1138,
+            "demand": 42,
+            "timestamp": "2015-04-17T00:28:56+02:00"
+        }
+    }

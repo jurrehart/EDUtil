@@ -1,0 +1,56 @@
+recv done
+{
+    "header": {
+        "softwareVersion": "0.5.4.1", 
+        "gatewayTimestamp": "2015-04-16T22:34:35.942023", 
+        "softwareName": "EliteOCR", 
+        "uploaderID": "EOa0027e5c"
+    }, 
+    "$schemaRef": "http://schemas.elite-markets.net/eddn/commodity/1", 
+    "message": {
+        "buyPrice": 0, 
+        "timestamp": "2015-04-16T22:32:44+00:00", 
+        "stationStock": 0, 
+        "systemName": "Oppi", 
+        "stationName": "Wyeth Hub", 
+        "demand": 2062, 
+        "demandLevel": "Low", 
+        "itemName": "Imperial Slaves", 
+        "sellPrice": 15744}
+    }
+}
+
+
+
+
+
+
+
+
+
+PRE recv
+
+
+
+recv done
+{"header": {"softwareVersion": "0.5.4.1", "gatewayTimestamp": "2015-04-16T22:34:36.384601", "softwareName": "EliteOCR", "uploaderID": "EOa0027e5c"}, "$schemaRef": "http://schemas.elite-markets.net/eddn/commodity/1", "message": {"buyPrice": 0, "timestamp": "2015-04-16T22:32:44+00:00", "stationStock": 0, "systemName": "Oppi", "stationName": "Wyeth Hub", "demand": 4359, "demandLevel": "Low", "itemName": "Auto-Fabricators", "sellPrice": 3731}}
+PRE recv
+recv done
+{"header": {"softwareVersion": "0.5.4.1", "gatewayTimestamp": "2015-04-16T22:34:36.825002", "softwareName": "EliteOCR", "uploaderID": "EOa0027e5c"}, "$schemaRef": "http://schemas.elite-markets.net/eddn/commodity/1", "message": {"buyPrice": 0, "timestamp": "2015-04-16T22:32:44+00:00", "stationStock": 0, "systemName": "Oppi", "stationName": "Wyeth Hub", "demand": 50069, "demandLevel": "Med", "itemName": "Bioreducing Lichen", "sellPrice": 1038}}
+PRE recv
+recv done
+{"header": {"softwareVersion": "0.5.4.1", "gatewayTimestamp": "2015-04-16T22:34:37.281765", "softwareName": "EliteOCR", "uploaderID": "EOa0027e5c"}, "$schemaRef": "http://schemas.elite-markets.net/eddn/commodity/1", "message": {"buyPrice": 435, "timestamp": "2015-04-16T22:32:44+00:00", "stationStock": 1039, "systemName": "Oppi", "stationName": "Wyeth Hub", "demand": 0, "sellPrice": 416, "itemName": "Computer Components", "supplyLevel": "Med"}}
+PRE recv
+recv done
+{"header": {"softwareVersion": "0.5.4.1", "gatewayTimestamp": "2015-04-16T22:34:37.716573", "softwareName": "EliteOCR", "uploaderID": "EOa0027e5c"}, "$schemaRef": "http://schemas.elite-markets.net/eddn/commodity/1", "message": {"buyPrice": 0, "timestamp": "2015-04-16T22:32:44+00:00", "stationStock": 0, "systemName": "Oppi", "stationName": "Wyeth Hub", "demand": 174213, "demandLevel": "High", "itemName": "H.E. Suits", "sellPrice": 426}}
+PRE recv
+recv done
+{"header": {"softwareVersion": "0.5.4.1", "gatewayTimestamp": "2015-04-16T22:34:38.152122", "softwareName": "EliteOCR", "uploaderID": "EOa0027e5c"}, "$schemaRef": "http://schemas.elite-markets.net/eddn/commodity/1", "message": {"buyPrice": 0, "timestamp": "2015-04-16T22:32:44+00:00", "stationStock": 0, "systemName": "Oppi", "stationName": "Wyeth Hub", "demand": 7446, "demandLevel": "Low", "itemName": "Robotics", "sellPrice": 1774}}
+PRE recv
+recv done
+{"header": {"softwareVersion": "0.5.4.1", "gatewayTimestamp": "2015-04-16T22:34:38.599680", "softwareName": "EliteOCR", "uploaderID": "EOa0027e5c"}, "$schemaRef": "http://schemas.elite-markets.net/eddn/commodity/1", "message": {"buyPrice": 0, "timestamp": "2015-04-16T22:32:49+00:00", "stationStock": 0, "systemName": "Oppi", "stationName": "Wyeth Hub", "demand": 365536, "demandLevel": "Med", "itemName": "Leather", "sellPrice": 291}}
+PRE recv
+recv done
+{"header": {"softwareVersion": "0.5.4.1", "gatewayTimestamp": "2015-04-16T22:34:39.047332", "softwareName": "EliteOCR", "uploaderID": "EOa0027e5c"}, "$schemaRef": "http://schemas.elite-markets.net/eddn/commodity/1", "message": {"buyPrice": 0, "timestamp": "2015-04-16T22:32:49+00:00", "stationStock": 0, "systemName": "Oppi", "stationName": "Wyeth Hub", "demand": 593701, "demandLevel": "Med", "itemName": "Natural Fabrics", "sellPrice": 544}}
+PRE recv
+recv done

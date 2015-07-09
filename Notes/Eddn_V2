@@ -1,0 +1,47 @@
+{
+    "header": {
+        "softwareVersion": "v1.00", 
+        "gatewayTimestamp": "2015-05-19T11:00:56.202636", 
+        "softwareName": "ED-TD.SPACE", 
+        "uploaderID": "Anthor"
+    }, 
+    "$schemaRef": "http://schemas.elite-markets.net/eddn/commodity/2", 
+    "message": {
+        "commodities": [
+            {"name": "Hydrogen Fuel", "supply": 15837, "supplyLevel": "High", "buyPrice": 94, "demand": 0, "sellPrice": 90}, 
+            {"name": "Clothing", "supply": 0, "buyPrice": 0, "demand": 1223, "demandLevel": "Low", "sellPrice": 318}, 
+            {"name": "Consumer Technology", "supply": 0, "buyPrice": 0, "demand": 651, "demandLevel": "High", "sellPrice": 7558}, 
+            {"name": "Domestic Appliances", "supply": 0, "buyPrice": 0, "demand": 456, "demandLevel": "Low", "sellPrice": 532}, 
+            {"name": "Animal Meat", "supply": 0, "buyPrice": 0, "demand": 120, "demandLevel": "High", "sellPrice": 1559}, 
+            {"name": "Coffee", "supply": 0, "buyPrice": 0, "demand": 210, "demandLevel": "High", "sellPrice": 1559}, 
+            {"name": "Fish", "supply": 0, "buyPrice": 0, "demand": 350, "demandLevel": "High", "sellPrice": 543}, 
+            {"name": "Food Cartridges", "supply": 0, "buyPrice": 0, "demand": 126, "demandLevel": "Low", "sellPrice": 143}, 
+            {"name": "Fruit and Vegetables", "supply": 0, "buyPrice": 0, "demand": 1529, "demandLevel": "High", "sellPrice": 478}, 
+            {"name": "Grain", "supply": 0, "buyPrice": 0, "demand": 8162, "demandLevel": "High", "sellPrice": 345}, 
+            {"name": "Synthetic Meat", "supply": 0, "buyPrice": 0, "demand": 987, "demandLevel": "High", "sellPrice": 400}, 
+            {"name": "Tea", "supply": 0, "buyPrice": 0, "demand": 539, "demandLevel": "High", "sellPrice": 1848}, 
+            {"name": "Polymers", "supply": 0, "buyPrice": 0, "demand": 82066, "demandLevel": "Med", "sellPrice": 238}, 
+            {"name": "Semiconductors", "supply": 0, "buyPrice": 0, "demand": 6675, "demandLevel": "Med", "sellPrice": 1025}, 
+            {"name": "Superconductors", "supply": 0, "buyPrice": 0, "demand": 7075, "demandLevel": "Med", "sellPrice": 6875}, 
+            {"name": "Beer", "supply": 0, "buyPrice": 0, "demand": 2635, "demandLevel": "High", "sellPrice": 307}, 
+            {"name": "Liquor", "supply": 0, "buyPrice": 0, "demand": 189, "demandLevel": "Med", "sellPrice": 697}, 
+            {"name": "Tobacco", "supply": 0, "buyPrice": 0, "demand": 684, "demandLevel": "High", "sellPrice": 5512}, 
+            {"name": "Wine", "supply": 0, "buyPrice": 0, "demand": 2764, "demandLevel": "High", "sellPrice": 400}, 
+            {"name": "Atmospheric Processors", "supply": 0, "buyPrice": 0, "demand": 1890, "demandLevel": "Low", "sellPrice": 407}, 
+            {"name": "Power Generators", "supply": 0, "buyPrice": 0, "demand": 2920, "demandLevel": "Low", "sellPrice": 532}, 
+            {"name": "Water Purifiers", "supply": 0, "buyPrice": 0, "demand": 5142, "demandLevel": "Low", "sellPrice": 303}, 
+            {"name": "Basic Medicines", "supply": 0, "buyPrice": 0, "demand": 122, "demandLevel": "Low", "sellPrice": 318}, 
+            {"name": "Progenitor Cells", "supply": 0, "buyPrice": 0, "demand": 303, "demandLevel": "High", "sellPrice": 7322}, 
+            {"name": "Gold", "supply": 0, "buyPrice": 0, "demand": 56, "demandLevel": "Low", "sellPrice": 9526}, 
+            {"name": "Palladium", "supply": 0, "buyPrice": 0, "demand": 42, "demandLevel": "Low", "sellPrice": 13272}, 
+            {"name": "Platinum", "supply": 0, "buyPrice": 0, "demand": 113, "demandLevel": "High", "sellPrice": 19401}, 
+            {"name": "Silver", "supply": 0, "buyPrice": 0, "demand": 98, "demandLevel": "Low", "sellPrice": 4741}, 
+            {"name": "Painite", "supply": 0, "buyPrice": 0, "demand": 2796, "demandLevel": "High", "sellPrice": 36276}, 
+            {"name": "Aquaponic Systems", "supply": 0, "buyPrice": 0, "demand": 11403, "demandLevel": "High", "sellPrice": 428}, 
+            {"name": "Land Enrichment Systems", "supply": 0, "buyPrice": 0, "demand": 29178, "demandLevel": "High", "sellPrice": 5512}
+        ], 
+        "timestamp": "2015-05-19T10:57:28+00:00", 
+        "systemName": "Eototo", 
+        "stationName": "Kurland Port"
+    }
+}
