@@ -42,8 +42,8 @@ public class EDUtil {
        
        //PersistenceService persistence = PersistenceService.getInstance();
        
-       MainGUI main = new MainGUI();
-       main.setVisible(true);
+      // MainGUI main = new MainGUI();
+       //main.setVisible(true);
     }
     
 }

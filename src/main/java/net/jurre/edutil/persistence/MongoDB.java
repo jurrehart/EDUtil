@@ -68,6 +68,36 @@ public class MongoDB {
         
     }
     
+    private void checkDB(){
+        DBCollection stationColl = this.db.getCollection(STATIONS_COLLECTION);
+        stationColl.createIndex("name");
+    }           
+    
+    private void updateStationMarketData(String stationName, String systemName, Object marketData){
+        logger.debug("updated market data for " + stationName + " in " + systemName);
+        DBCollection stations = this.db.getCollection(STATIONS_COLLECTION);
+        BasicDBObject filter = new BasicDBObject();
+        filter.put("system_id", getSystemID(systemName));
+        filter.append("name", stationName);
+        
+        DBObject station = stations.findOne(filter);
+        
+        if ( station != null ){
+            station.put("commodities", marketData);           
+            stations.save(station);
+        }
+    }
+        
+    private int getSystemID(String systemName){
+        DBCollection systems = this.db.getCollection(SYSTEMS_COLLECTION);
+        int systemID = -1;
+        
+        BasicDBObject system = (BasicDBObject)systems.findOne(new BasicDBObject("name", systemName));
+        systemID = system.getInt("id");
+        
+        return systemID;
+    }
+    
     public void saveEDDNData(String data){
         BasicDBObject dataObj = (BasicDBObject)JSON.parse(data);
         
@@ -75,7 +105,13 @@ public class MongoDB {
         dataObj.removeField("$schemaRef");
         dataObj.append("schemaRef",schema);
         
-        DBCollection collection = this.db.getCollection("EDDN");
+        if ( dataObj.getString("schemaRef").equalsIgnoreCase("http://schemas.elite-markets.net/eddn/commodity/2")){
+            BasicDBObject message = (BasicDBObject)dataObj.get("message");
+            updateStationMarketData( message.getString("stationName"), message.getString("systemName"), message.get("commodities"));
+            dataObj.append("stationUpdated", true);
+        }
+        
+        DBCollection collection = this.db.getCollection(MongoDB.EDDN_COLLECTION);
         collection.insert(dataObj);
     }
     
@@ -84,7 +120,11 @@ public class MongoDB {
         DBCollection collection = this.db.getCollection(collectionName);
         
         
-        
+        if ( ! dataObj.containsField("_id")){
+            if ( dataObj.containsField("id"))
+                dataObj.append("_id", dataObj.get("id"));
+        }
+        /*
         BasicDBObject search = new BasicDBObject();
         search.put("name", dataObj.getString("name"));
         DBObject lookup = collection.findOne(search);
@@ -93,7 +133,7 @@ public class MongoDB {
             dataObj.append("_id", lookup.get("_id"));
             logger.debug("Found id adding to object");
         }
-        
+        */
         collection.save(dataObj);
     }
     

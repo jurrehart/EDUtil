@@ -49,6 +49,7 @@ public class EDDNReceiver implements Runnable{
         while(true){           
             try {
               // Receive compressed raw market data.
+                    logger.debug("Waiting for data");
                     byte[] receivedData = subscriber.recv(0);
                     // We build a large enough buffer to contain the decompressed data.
                     byte[] decompressed = new byte[receivedData.length * 16];
@@ -67,7 +68,6 @@ public class EDDNReceiver implements Runnable{
                     data.setHash(market_json.hashCode()+"");
                     data.setJson(market_json);                    
                     this.mongo.saveEDDNData(market_json);
-                    //persistence.saveEDDNData(data);
             }
             catch ( Exception e){
                 e.printStackTrace();

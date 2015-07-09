@@ -70,8 +70,9 @@ public class EDDBImport {
             config.saveString("lastUpdate", Long.toString(currentTime));
             this.mongo.savePluginConfig(config);
         }
-        
-        
+        else{
+            logger.info("Skipping EDDB import as less than 24 hours have passed");
+        }
     }
     
     private void importCommodities(){
