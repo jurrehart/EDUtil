@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import net.jurre.edutil.persistence.PersistenceService;
 
 import net.jurre.edutil.model.Commodity;
+import net.jurre.edutil.model.PluginConfiguration;
 import net.jurre.edutil.model.Station;
 import net.jurre.edutil.model.SystemData;
 import net.jurre.edutil.persistence.MongoDB;
@@ -37,23 +38,45 @@ public class EDDBImport {
 //http://eddb.io/archive/v3/commodities.json
     static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(EDDBImport.class.getName());
     
-    //private final PersistenceService persistence;
-    private MongoDB mongo;
+    
+    private final MongoDB mongo;
+    private PluginConfiguration config;
     
     public EDDBImport(){
         //this.persistence = PersistenceService.getInstance();
         this.mongo = new MongoDB();
+        this.config = this.mongo.loadPluginConfiguration(EDDBImport.class.getName());
+        if (this.config == null){
+            this.config = new PluginConfiguration(EDDBImport.class.getName());
+            this.config.saveString("lastUpdate", "0000");
+        }
+        long lastUpdate = 0L;
+        try{
+            lastUpdate = Long.parseLong(config.getString("lastUpdate"));
+        }
+        catch (NumberFormatException e){
+            logger.warn("Error parsing lastupdate value for plugin config");
+        }
         
-        // ad check since last import if < 24 hours skipp all and close
-        this.importCommodities();
-        this.importSystems();
-        this.importStations();
+        long currentTime = System.currentTimeMillis();
+        
+        
+        //Check since last import if < 24 as EDDB exports every 24 hours
+        if ( (currentTime - lastUpdate) >= (3600*24*1000) ){
+            logger.debug("Importing EDDB data as at least 24 hours have passed");
+            this.importCommodities();
+            this.importSystems();
+            this.importStations();
+            config.saveString("lastUpdate", Long.toString(currentTime));
+            this.mongo.savePluginConfig(config);
+        }
         
         
     }
     
     private void importCommodities(){
         logger.debug("Importing EDDB Commodities");
+        
         Gson gson = new Gson();
         Type commodityList = new TypeToken<Collection<Commodity>>() {}.getType();
         try{
