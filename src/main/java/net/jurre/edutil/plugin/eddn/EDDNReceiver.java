@@ -35,8 +35,9 @@ public class EDDNReceiver implements Runnable{
         // Prepare our context and subscriber
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket subscriber = context.socket(ZMQ.SUB);
+                
+        subscriber.setRcvHWM(1000);
         
-        subscriber.setRcvHWM(0);
         subscriber.connect("tcp://eddn-relay.elite-markets.net:9500");
         subscriber.subscribe("".getBytes(ZMQ.CHARSET));
         //subscriber.setTCPKeepAlive(1); //activate keep-alive
@@ -63,6 +64,8 @@ public class EDDNReceiver implements Runnable{
                     // Transform data into JSON strings.
                     String market_json = new String(output, "UTF-8");
                     logger.info(market_json);
+                    logger.debug(subscriber.getBacklog() + " in backlog");
+                   
                     Gson gson = new Gson();
                     EDDNData data = gson.fromJson(market_json, EDDNData.class);
                     data.setHash(market_json.hashCode()+"");

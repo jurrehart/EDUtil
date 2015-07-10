@@ -47,7 +47,7 @@ public class MongoDB {
     private static final String CONFIG_COLLECTION = "Configs";
     private static final String SYSTEMS_COLLECTION = "Systems";
     private static final String STATIONS_COLLECTION = "Stations";
-    private static final String COMODITIES_COLLECTION = "Comodities";
+    private static final String COMMODITIES_COLLECTION = "Commodities";
     private static final String EDDN_COLLECTION = "EDDN";
     
     public MongoDB(){
@@ -71,9 +71,16 @@ public class MongoDB {
     private void checkDB(){
         DBCollection stationColl = this.db.getCollection(STATIONS_COLLECTION);
         stationColl.createIndex("name");
+        stationColl.createIndex("system_id");
+        stationColl.createIndex( new BasicDBObject( "name", "text" ));
+        
+        DBCollection systemsColl = this.db.getCollection(SYSTEMS_COLLECTION);
+        systemsColl.createIndex("name");
+        systemsColl.createIndex( new BasicDBObject( "name", "text" ));
+        
     }           
     
-    private void updateStationMarketData(String stationName, String systemName, Object marketData){
+    private boolean updateStationMarketData(String stationName, String systemName, Object marketData){
         logger.debug("updated market data for " + stationName + " in " + systemName);
         DBCollection stations = this.db.getCollection(STATIONS_COLLECTION);
         BasicDBObject filter = new BasicDBObject();
@@ -85,7 +92,14 @@ public class MongoDB {
         if ( station != null ){
             station.put("commodities", marketData);           
             stations.save(station);
+            logger.info("updated market info for Station : " + stationName + " in System: " + systemName);
+            return true;
         }
+        else{
+            logger.error("Unknown station " + stationName + " in " + systemName);
+            // look up possible alternatives , for example fulltext search of stations in system high scorer
+        }
+        return false;
     }
         
     private int getSystemID(String systemName){
@@ -93,7 +107,7 @@ public class MongoDB {
         int systemID = -1;
         
         BasicDBObject system = (BasicDBObject)systems.findOne(new BasicDBObject("name", systemName));
-        systemID = system.getInt("id");
+        if (system != null ) systemID = system.getInt("id");
         
         return systemID;
     }
@@ -107,8 +121,8 @@ public class MongoDB {
         
         if ( dataObj.getString("schemaRef").equalsIgnoreCase("http://schemas.elite-markets.net/eddn/commodity/2")){
             BasicDBObject message = (BasicDBObject)dataObj.get("message");
-            updateStationMarketData( message.getString("stationName"), message.getString("systemName"), message.get("commodities"));
-            dataObj.append("stationUpdated", true);
+            boolean stationupdated = updateStationMarketData( message.getString("stationName"), message.getString("systemName"), message.get("commodities"));
+            if ( stationupdated ) dataObj.append("stationUpdated", true);
         }
         
         DBCollection collection = this.db.getCollection(MongoDB.EDDN_COLLECTION);
@@ -146,7 +160,7 @@ public class MongoDB {
     }
     
     public void saveCommodity(String data){
-        this.saveData(data, MongoDB.COMODITIES_COLLECTION);
+        this.saveData(data, MongoDB.COMMODITIES_COLLECTION);
     }
     
     public void savePluginConfig(PluginConfiguration config){
